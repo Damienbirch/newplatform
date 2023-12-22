@@ -1,0 +1,176 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .signin-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+        }
+
+        .form-group .forgot-password {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .signin-button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .register-link {
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="signin-container">
+        <h2>Sign In</h2>
+        <form action="signin_process.php" method="post">
+            <div class="form-group">
+                <label for="emailOrUsername">Email or Username:</label>
+                <input type="text" id="emailOrUsername" name="emailOrUsername" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <p class="form-group forgot-password"><a href="forgot_password.php">Forgot your password?</a></p>
+            <button type="submit" class="signin-button">Sign In</button>
+        </form>
+        <p class="register-link">Don't have an account? <a href="register.php">Register</a></p>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background: url('https://i.pinimg.com/564x/62/36/13/623613b0a0e0fb5134a923caf352a2bd.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+     
+
+        .signin-container {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333; /* Dark grey text color */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+        }
+
+        .form-group .forgot-password {
+            text-align: left;
+            margin-bottom: 20px;
+            color: #333; /* Dark grey text color */
+        }
+
+        .signin-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .register-link {
+            margin-top: 10px;
+            display: block;
+            color: #333; /* Dark grey text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="signin-container">
+        <h2 style="color: #333;">Sign In</h2>
+        <form action="signin.html" method="post"> 
+            <div class="form-group">
+                <label for="emailOrUsername">Email or Username:</label>
+                <input type="text" id="emailOrUsername" name="emailOrUsername" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <p class="form-group forgot-password"><a href="forgotpass.html">Forgot your password?</a></p>
+            <button type="submit" class="signin-button">Sign In</button>
+        </form>
+        <p class="register-link">Don't have an account? <a href="reg.html">Register</a></p>
+    </div>
+</body>
+</html>

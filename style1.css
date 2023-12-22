@@ -1,0 +1,49 @@
+body {
+    background-color: yellow; /* Light gray background */
+    color: #343a40; /* Dark text */
+}
+
+.navbar {
+    background-color: grey; /* Blue navbar */
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #ffffff !important; /* White text for navbar items */
+}
+
+/* Add other global styles here */
+
+/* Your existing styles */
+.hero {
+    background-color: grey; /* White background for hero section */
+    color: white; /* Black text for hero section */
+    padding: 100px 0;
+}
+
+.feature,
+.service,
+.about,
+.work,
+.pricing,
+.faq {
+    background-color: grey; /* White background for other sections */
+    color: black; /* Black text for other sections */
+    padding: 80px 0;
+}
+
+footer {
+    background-color: grey; /* Blue footer */
+    color: #ffffff; /* White text for footer */
+    padding: 30px 0; 
+}
+
+.btn_hover1 {
+    background-color: yellow; /* Blue button */
+    color: white; /* White text for button */
+}
+
+.btn_hover2 {
+    background-color: yellow; /* White button */
+    color: white; /* Blue text for button */
+}

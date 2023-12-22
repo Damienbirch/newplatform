@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coupon Code Generator</title>
+</head>
+<body>
+    <h1>Coupon Code Generator</h1>
+    
+    <label for="prefix">Prefix:</label>
+    <input type="text" id="prefix" placeholder="Enter prefix">
+
+    <label for="length">Length:</label>:</label>
+    <input type="number" id="length" value="8">
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" value="1">
+
+    <button onclick="generateCouponCodes()">Generate</button>
+
+    <h2>Generated Coupon Codes:</h2>
+    <ul id="couponCodes"></ul>
+
+    <script>
+        function generateCouponCodes() {
+            const prefix = document.getElementById('prefix').value || 'COUPON';
+            const length = document.getElementById('length').value || 8;
+            const quantity = document.getElementById('quantity').value || 1;
+            const couponCodesList = document.getElementById('couponCodes');
+
+            couponCodesList.innerHTML = ''; 
+
+            for (let i = 0; i < quantity; i++) {
+                fetch('coupon_generator.php?prefix=' + encodeURIComponent(prefix) + '&length=' + encodeURIComponent(length))
+                    .then(response => response.text())
+                    .then(couponCode => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = couponCode;
+                        couponCodesList.appendChild(listItem);
+                    });
+            }
+        }
+    </script>
+
+    <?php
+    function generateCouponCode($prefix = 'COUPON', $length = 8) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+
+        return $prefix . '-' . $randomString;
+    }
+    ?>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Coupon Code Generator</title>
+</head>

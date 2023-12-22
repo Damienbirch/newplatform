@@ -1,0 +1,51 @@
+.pricing-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+    overflow: hidden;
+}
+
+.pricing-card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.pricing-card:hover {
+    transform: scale(1.05);
+}
+
+h2 {
+    color: #333;
+}
+
+h3 {
+    color: #555;
+}
+
+h6 {
+    color: #777;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.btn_hover1 {
+    background-color: yellow; /* Yellow button */
+    color: #fff; /* White text for button */
+}
+
+.btn_hover2 {
+    background-color: yellow; /* Yellow button */
+    color: #fff; /* White text for button */
+}

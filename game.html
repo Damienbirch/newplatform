@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spin the Wheel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #wheel-container {
+      position: relative;
+    }
+
+    #wheel {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: conic-gradient(#3498db, #e74c3c, #2ecc71, #f39c12, #9b59b6, #34495e, #1abc9c);
+      position: absolute;
+      cursor: pointer;
+      transition: transform 3s ease-out;
+      color: white;
+    }
+
+    #arrow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 40px solid white;
+      cursor: pointer;
+    }
+
+    #result {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 24px;
+      color: black;
+    }
+
+    #spin-button {
+      background-color: yellow;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #color {
+      color:black;
+    }
+  </style>
+</head>
+<body>
+  <div id="wheel-container">
+    <div id="wheel"></div>
+    <div id="arrow"></div>
+  </div>
+  <div id="result"></div>
+  <button id="spin-button">Spin</button>
+  <script>
+    const wheel = document.getElementById('wheel');
+    const arrow = document.getElementById('arrow');
+    const resultDiv = document.getElementById('result');
+    const spinButton = document.getElementById('spin-button');
+  
+    let spinning = false;
+  
+    arrow.addEventListener('click', spinWheel);
+    spinButton.addEventListener('click', spinWheel);
+  
+    function spinWheel() {
+      if (!spinning) {
+        spinning = true;
+        const degrees = 3600 + Math.floor(Math.random() * 360);
+        wheel.style.transform = `rotate(${degrees}deg)`;
+        setTimeout(() => {
+          spinning = false;
+          displayResult(degrees % 360);
+        }, 3000); // Adjust the duration based on your preference
+      }
+    }
+  
+    function displayResult(degrees) {
+      let amount = 0;
+      let color = 'black';
+  
+      if (degrees >= 0 && degrees < 60) {
+        amount = 100;
+        color = 'green';
+      } else if (degrees >= 60 && degrees < 120) {
+        amount = 0;
+        color = 'black';
+      } else if (degrees >= 120 && degrees < 180) {
+        amount = 300;
+        color = 'red';
+      } else if (degrees >= 180 && degrees < 240) {
+        amount = 0;
+        color = 'black';
+      } else if (degrees >= 240 && degrees < 300) {
+        amount = 200;
+        color = 'blue';
+      } else {
+        amount = 0;
+        color = 'black';
+      }
+  
+      resultDiv.textContent = amount === 0 ? 'Sorry, you got nothing.' : `Congratulations! You won ${amount} Naira.`;
+      resultDiv.style.color = color;
+    }
+      </script>
+  
+</body>
+</html>

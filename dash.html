@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.pinimg.com/564x/bc/04/0b/bc040bb02a8782fac68b28978920f1a5.jpg');
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+      
+        nav {
+            background-color: #eee;
+            padding: 10px;
+        }
+
+        #dashboard-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .dashboard-box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            width: 200px;
+            cursor: pointer; /* Add cursor pointer for better interaction */
+        }
+
+
+        #withdraw-btn,
+        #transfer-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: yellow;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #menu-btn {
+            position: fixed;
+            right: 10px;
+            top: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            height: 4%;
+        }
+
+        #big-box {
+            display: flex;
+            flex-direction: column;
+            top: 50%;
+            left: 50%;
+            margin-top: 15%;
+            position: relative;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            width: 50%;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #big-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 15%;
+            text-align: center;
+        }
+
+        .balance-link {
+            cursor: pointer;
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .menu-btn {
+            display: block;
+            width: 10%;
+            padding: 8px;
+            text-align: center;
+            border: none;
+            background-color: yellow;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .big-box-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .big-box-btn {
+            width: 30%;
+            padding: 8px;
+            text-align: center;
+            border: none;
+            background-color: #3498db;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 0; /* Set z-index to be below other elements */
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="water.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <button id="home-btn">Home</button>
+        <button id="menu-btn" onclick="toggleBigBox()">Menu &#9662;</button>
+    </header>
+
+    <nav>
+        <div id="dashboard-container">
+            <div class="dashboard-box" id="affiliate-balance-box" onclick="scrollToBalance('task-balance-box')">
+                <h3 class="balance-link">Affiliate Balance</h3>
+                <p id="affiliate-balance">$400,000.00</p>
+            </div>
+
+            <div class="dashboard-box" id="task-balance-box" onclick="scrollToBalance('game-balance-box')">
+                <h3 class="balance-link">Task Balance</h3>
+                <p id="task-balance">$400,000.00</p>
+            </div>
+
+            <div class="dashboard-box" id="game-balance-box" onclick="scrollToBalance('raffle-balance-box')">
+                <h3 class="balance-link">Game Balance</h3>
+                <p id="game-balance">$400,000.00</p>
+            </div>
+
+            <div class="dashboard-box" id="raffle-balance-box" onclick="scrollToBalance('affiliate-balance-box')">
+                <h3 class="balance-link">Raffle Draw Balance</h3>
+                <p id="raffle-balance">$400,000.00</p>
+            </div>
+        </div>
+    </nav>
+
+    <div id="big-box">
+        <div id="big-box-content">
+            <div class="big-box-buttons">
+                <button class="big-box-btn">VTU</button>
+                <button class="big-box-btn">Task</button>
+                <button class="big-box-btn">Post</button>
+            </div>
+            <div class="big-box-buttons">
+                <button class="big-box-btn">Spin the Wheel</button>
+                <button class="big-box-btn">Raffle Draw</button>
+            </div>
+        </div>
+        <button id="withdraw-btn">Withdraw</button>
+        <button id="transfer-btn">Transfer</button>
+    </div>
+
+    <div class="footer">
+        <button class="menu-btn">VTU</button>
+        <button class="menu-btn">Spin the Wheel</button>
+        <button class="menu-btn">Post</button>
+        <button class="menu-btn">Task</button>
+        <button class="menu-btn">Raffle Draw</button>
+    </div>
+
+    <script>
+        var balanceBoxes = ["affiliate-balance-box", "task-balance-box", "game-balance-box", "raffle-balance-box"];
+        var currentBalanceIndex = 0;
+
+        function toggleBigBox() {
+            currentBalanceIndex = (currentBalanceIndex + 1) % balanceBoxes.length;
+            scrollToBalance(balanceBoxes[currentBalanceIndex]);
+        }
+
+        function scrollToBalance(balanceId) {
+            document.getElementById(balanceId).scrollIntoView({ behavior: 'smooth' });
+        }
+        // You can use JavaScript to update the balances dynamically
+        // For example, document.getElementById('affiliate-balance').innerText = updatedAffiliateBalance;
+        // Make sure to replace "updatedAffiliateBalance" with the actual variable or value you want to display.
+    </script>
+
+
+</body>
+</html>

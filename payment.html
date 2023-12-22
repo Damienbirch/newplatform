@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Add any additional styles or scripts here -->
+    <style>
+        /* Add your custom styles here */
+        .payment-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container payment-container">
+        <h1 class="text-center">Payment Page</h1>
+
+        <!-- Task Money Section -->
+        <div class="task-money-section">
+            <h2>Task Money</h2>
+            <p>Available Task Money: $<span id="task-money">500</span></p>
+            <button class="btn btn-primary" onclick="withdrawTaskMoney()">Withdraw Task Money</button>
+        </div>
+        
+        <!-- Affiliate Money Section -->
+        <div class="affiliate-money-section">
+            <h2>Affiliate Money</h2>
+            <p>Available Affiliate Money: $<span id="affiliate-money">200</span></p>
+            <button class="btn btn-primary" onclick="withdrawAffiliateMoney()">Withdraw Affiliate Money</button>
+        </div>
+
+        <!-- Withdrawal Options -->
+        <div class="withdrawal-options">
+            <h2>Withdrawal Options</h2>
+            <select id="withdrawal-method" class="form-control">
+                <option value="paypal">Bank Transfer</option>
+                <option value="bank">Ussd</option>
+            </select>
+            <button class="btn btn-success" onclick="withdrawFunds()">Withdraw Funds</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Add any additional scripts here -->
+    <script>
+        // Add your JavaScript functions here
+        function withdrawTaskMoney() {
+            // Add logic to withdraw task money
+            const taskMoneyElement = document.getElementById('task-money');
+            const currentTaskMoney = parseFloat(taskMoneyElement.innerText);
+    
+            // Prompt for withdrawal amount
+            const withdrawalAmount = parseFloat(prompt('Enter withdrawal amount for Task Money'));
+    
+            // Check if the withdrawal amount is valid
+            if (isNaN(withdrawalAmount) || withdrawalAmount <= 0 || withdrawalAmount > currentTaskMoney) {
+                alert('Invalid withdrawal amount. Please enter a valid amount.');
+                return;
+            }
+    
+            // Update the task money balance dynamically
+            taskMoneyElement.innerText = currentTaskMoney - withdrawalAmount;
+    
+            // Display amount withdrawn
+            alert(`Withdrawal successful! You withdrew $${withdrawalAmount} for Task Money.`);
+        }
+    
+        function withdrawAffiliateMoney() {
+            // Add logic to withdraw affiliate money
+            const affiliateMoneyElement = document.getElementById('affiliate-money');
+            const currentAffiliateMoney = parseFloat(affiliateMoneyElement.innerText);
+    
+            // Prompt for withdrawal amount
+            const withdrawalAmount = parseFloat(prompt('Enter withdrawal amount for Affiliate Money'));
+    
+            // Check if the withdrawal amount is valid
+            if (isNaN(withdrawalAmount) || withdrawalAmount <= 0 || withdrawalAmount > currentAffiliateMoney) {
+                alert('Invalid withdrawal amount. Please enter a valid amount.');
+                return;
+            }
+    
+            // Update the affiliate money balance dynamically
+            affiliateMoneyElement.innerText = currentAffiliateMoney - withdrawalAmount;
+    
+            // Display amount withdrawn
+            alert(`Withdrawal successful! You withdrew $${withdrawalAmount} for Affiliate Money.`);
+        }
+    
+        function withdrawFunds() {
+            withdrawTaskMoney();
+            withdrawAffiliateMoney();
+        }
+    </script>
+    
+
+</body>
+
+</html>
